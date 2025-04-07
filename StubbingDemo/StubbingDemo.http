@@ -1,0 +1,6 @@
+@StubbingDemo_HostAddress = http://localhost:5248
+
+GET {{StubbingDemo_HostAddress}}/weatherforecast/
+Accept: application/json
+
+###
