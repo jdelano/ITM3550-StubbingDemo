@@ -1,5 +1,7 @@
 using Microsoft.EntityFrameworkCore;
 using StubbingDemo.Database.Models;
+using StubbingDemo.Repositories;
+using StubbingDemo.Services;
 var builder = WebApplication.CreateBuilder(args);
 // Add middleware services
 builder.Services.AddAuthorization();
@@ -10,6 +12,8 @@ builder.Configuration
     .AddEnvironmentVariables();
 builder.Services.AddDbContext<NorthwindContext>(options =>
 options.UseSqlServer(builder.Configuration.GetConnectionString("Northwind")));
+builder.Services.AddScoped<IShipperService, ShipperService>();
+builder.Services.AddScoped<IShipperRepository, ShipperRepository>();
 var app = builder.Build();
 // Configure the HTTP request pipeline.
 if (app.Environment.IsDevelopment())

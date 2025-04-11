@@ -5,7 +5,14 @@ using StubbingDemo.Repositories;
 
 namespace StubbingDemo.Services;
 
-public class ShipperService
+public interface IShipperService
+{
+    Task<bool> CreateShipperAsync(int shipperId, string companyName, string phone);
+    Task<Shipper> GetShipperByIdAsync(int shipperId);
+    IEnumerable<Shipper> GetShippers();
+}
+
+public class ShipperService : IShipperService
 {
     private readonly IShipperRepository _shipperRepository;
     public ShipperService(IShipperRepository shipperRepository)
@@ -13,9 +20,9 @@ public class ShipperService
         _shipperRepository = shipperRepository;
     }
 
-    public async Task<bool> CreateShipperAsync(int v1, string v2, string v3)
+    public async Task<bool> CreateShipperAsync(int shipperId, string companyName, string phone)
     {
-        await _shipperRepository.CreateShipperAsync(v1, v2, v3);
+        await _shipperRepository.CreateShipperAsync(shipperId, companyName, phone);
         return true;
     }
 
@@ -25,7 +32,8 @@ public class ShipperService
         {
             return await _shipperRepository.GetShipperByIdAsync(shipperId);
 
-        } catch (ArgumentException ex)
+        }
+        catch (ArgumentException ex)
         {
             throw new ShipperNotFoundException("Shipper not found", ex);
         }

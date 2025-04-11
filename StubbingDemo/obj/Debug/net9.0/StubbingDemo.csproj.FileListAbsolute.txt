@@ -264,3 +264,4 @@
 /Users/jdelano/Developer/ITM3550/Demos/StubbingDemo/StubbingDemo/obj/Debug/net9.0/StubbingDemo.pdb
 /Users/jdelano/Developer/ITM3550/Demos/StubbingDemo/StubbingDemo/obj/Debug/net9.0/StubbingDemo.genruntimeconfig.cache
 /Users/jdelano/Developer/ITM3550/Demos/StubbingDemo/StubbingDemo/obj/Debug/net9.0/ref/StubbingDemo.dll
+/Users/jdelano/Developer/ITM3550/Demos/StubbingDemo/StubbingDemo/obj/Debug/net9.0/StubbingDemo.sourcelink.json

@@ -343,3 +343,4 @@
 /Users/jdelano/Developer/ITM3550/Demos/StubbingDemo/StubbingDemoTests/obj/Debug/net9.0/ref/StubbingDemoTests.dll
 /Users/jdelano/Developer/ITM3550/Demos/StubbingDemo/StubbingDemoTests/bin/Debug/net9.0/Castle.Core.dll
 /Users/jdelano/Developer/ITM3550/Demos/StubbingDemo/StubbingDemoTests/bin/Debug/net9.0/Moq.dll
+/Users/jdelano/Developer/ITM3550/Demos/StubbingDemo/StubbingDemoTests/obj/Debug/net9.0/StubbingDemoTests.sourcelink.json
