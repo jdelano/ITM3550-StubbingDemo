@@ -58,13 +58,13 @@ public class ShipperServiceTests
     public async Task CreateShipperAsync_ShouldCallRepository()
     {
        _mockShipperRepository
-            .Setup(repo => repo.CreateShipperAsync(1, "Test Company", "123-456-7890"))
-            .Returns(Task.CompletedTask);
+            .Setup(repo => repo.CreateShipperAsync("Test Company", "123-456-7890"))
+            .ReturnsAsync(new Shipper { ShipperId = 1, CompanyName = "Test Company", Phone = "123-456-7890" });
 
         var service = new ShipperService(_mockShipperRepository.Object);
-        var result = await service.CreateShipperAsync(1, "Test Company", "123-456-7890");
+        var result = await service.CreateShipperAsync("Test Company", "123-456-7890");
 
-        _mockShipperRepository.Verify(repo => repo.CreateShipperAsync(1, "Test Company", "123-456-7890"), Times.Once);
+        _mockShipperRepository.Verify(repo => repo.CreateShipperAsync("Test Company", "123-456-7890"), Times.Once);
     }
 
     [Test]

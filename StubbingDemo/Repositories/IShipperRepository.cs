@@ -5,7 +5,9 @@ namespace StubbingDemo.Repositories;
 
 public interface IShipperRepository
 {
-    Task CreateShipperAsync(int shipperId, string companyName, string phone);
+    Task<Shipper> CreateShipperAsync(string companyName, string phone);
+    Task<bool> DeleteShipperAsync(Shipper shipper);
     Task<Shipper> GetShipperByIdAsync(int shipperId);
     IEnumerable<Shipper> GetShippers();
+    Task SaveChangesAsync();
 }

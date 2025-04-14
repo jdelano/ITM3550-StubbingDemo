@@ -1,4 +1,5 @@
 using System;
+using System.Threading.Tasks;
 using StubbingDemo.Database.Models;
 
 namespace StubbingDemo.Repositories;
@@ -11,11 +12,10 @@ public class ShipperRepository : IShipperRepository
         _context = context;
     }
 
-    public async Task CreateShipperAsync(int shipperId, string companyName, string phone)
+    public async Task<Shipper> CreateShipperAsync(string companyName, string phone)
     {
         var shipper = new Shipper
         {
-            ShipperId = shipperId,
             CompanyName = companyName,
             Phone = phone
         };
@@ -23,11 +23,18 @@ public class ShipperRepository : IShipperRepository
         {
             await _context.Shippers.AddAsync(shipper);
             await _context.SaveChangesAsync();
+            return shipper;
         }
         catch (Exception ex)
         {
             throw new CouldNotAddToDatabaseException("Could not add shipper to database", ex);
         }
+    }
+
+    public async Task<bool> DeleteShipperAsync(Shipper shipper)
+    {
+        _context.Remove(shipper);
+        return await _context.SaveChangesAsync() > 0;
     }
 
     public async Task<Shipper> GetShipperByIdAsync(int shipperId)
@@ -53,4 +60,11 @@ public class ShipperRepository : IShipperRepository
             yield return shipper;
         }
     }
+
+    public async Task SaveChangesAsync()
+    {
+        await _context.SaveChangesAsync();
+    }
+
+
 }

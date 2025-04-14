@@ -30,7 +30,7 @@ public class ShipperRepositoryTests
     public void ShipperRepository_CreateShipper_ShouldThrowCorrectExceptionOnDatabaseFailure()
     {
         _context.CauseError = true;
-        Assert.ThrowsAsync<CouldNotAddToDatabaseException>(() => _shipperRepository.CreateShipperAsync(2, "Test", "111-2222"));
+        Assert.ThrowsAsync<CouldNotAddToDatabaseException>(() => _shipperRepository.CreateShipperAsync("Test", "111-2222"));
     }
 
     [Test]
