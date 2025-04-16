@@ -1,5 +1,6 @@
 using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
+using StubbingDemo.Database.Models.Dtos;
 using StubbingDemo.Services;
 
 namespace StubbingDemo.Controllers
@@ -19,6 +20,17 @@ namespace StubbingDemo.Controllers
         public IActionResult Get()
         {
             return Ok(_shipperService.GetShippers());
+        }
+
+        [HttpGet("{id}")]
+        public async Task<IActionResult> Get(int id)
+        {
+            return Ok(await _shipperService.GetShipperByIdAsync(id));
+        }
+
+        public async Task<IActionResult> Post(ShipperDto shipperDto)
+        {
+            throw new NotImplementedException();
         }
     }
 }
